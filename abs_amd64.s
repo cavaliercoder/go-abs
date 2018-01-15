@@ -1,4 +1,4 @@
-TEXT ·WithASM(SB),$0
+TEXT ·WithASM(SB),$0-16
   MOVQ    n+0(FP), AX
   MOVQ    AX, CX          // y ← x
   SARQ    $63, CX         // y ← y ⟫ 63

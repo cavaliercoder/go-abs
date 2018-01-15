@@ -33,8 +33,10 @@ func WithStdLib(n int64) int64 {
 // Hacker's Delight. It utilizes Two's Complement arithmetic to compute the
 // absolute value of an integer.
 func WithTwosComplement(n int64) int64 {
-	y := n >> 63
-	return (n ^ y) - y
+	// y := n >> 63
+	// return (n ^ y) - y
+	mask := -int64(uint64(n) >> 63)
+	return (n + mask) ^ mask
 }
 
 // WithASM uses the Two's Complement trick, but implemented in Assembly to

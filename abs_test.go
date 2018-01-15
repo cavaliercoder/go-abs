@@ -60,6 +60,13 @@ func Rand() int64 {
 // returned value is not used within benchmarks.
 var sink int64
 
+// BenchmarkRand measures the overhead incurred by the RNG for other benchmarks.
+func BenchmarkRand(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		sink += Rand()
+	}
+}
+
 func BenchmarkWithBranch(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		sink += WithBranch(Rand())
