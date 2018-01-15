@@ -67,6 +67,9 @@ func BenchmarkAbs(b *testing.B) {
 
 	for i := 0; i < maxInputs; i++ {
 		benchInputs[i] = rand.Int63()
+		if rand.Float32() > 0.5 {
+			benchInputs[i] = -1 * benchInputs[i]
+		}
 	}
 
 	for _, ts := range testFuncs {
